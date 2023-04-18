@@ -1,0 +1,18 @@
+Bootstrap: docker
+From: intel/intel-optimized-pytorch
+
+%labels
+  Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
+
+%post
+  # Upgrade packages to most recent versions
+  apt update 
+
+  # Upgrade pip
+  pip install pip --upgrade
+  
+  # Install jupyterlab
+  pip install jupyterlab pandas onnx
+
+%runscript
+  jupyter-lab --ip 0.0.0.0  
