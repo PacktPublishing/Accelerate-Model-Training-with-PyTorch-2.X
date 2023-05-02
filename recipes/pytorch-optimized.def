@@ -23,15 +23,13 @@ From: continuumio/miniconda3
   pip install pip --upgrade
   
   # Install additional packages
-  pip install requests --upgrade
-  pip install jupyterlab pandas onnx
-  pip install visualdl -i https://mirror.baidu.com/pypi/simple
+  pip install jupyterlab pandas onnx tensorboard
 
   # Install Intel OpenMP
   #pip install intel-openmp
 
   # Install PyTorch
-  pip install torch==2.0.0+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+  pip install torch==2.0.0+cpu torchvision torchaudio torch_tb_profiler --index-url https://download.pytorch.org/whl/cpu
 
   # Install jemmalloc
   #git clone https://github.com/jemalloc/jemalloc
