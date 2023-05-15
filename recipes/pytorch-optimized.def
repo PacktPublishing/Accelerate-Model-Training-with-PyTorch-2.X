@@ -14,10 +14,10 @@ From: continuumio/miniconda3
 
 %post
   # Upgrade packages to most recent versions
-  #apt update 
+  apt update 
 
   # Basic
-  #apt install make autoconf gcc -y
+  apt install make autoconf gcc -y
 
   # Upgrade pip
   pip install pip --upgrade
@@ -26,21 +26,21 @@ From: continuumio/miniconda3
   pip install jupyterlab pandas onnx tensorboard
 
   # Install Intel OpenMP
-  #pip install intel-openmp
+  pip install intel-openmp
 
   # Install PyTorch
   pip install torch==2.0.0+cpu torchvision torchaudio torch_tb_profiler --index-url https://download.pytorch.org/whl/cpu
 
   # Install jemmalloc
-  #git clone https://github.com/jemalloc/jemalloc
-  #cd jemalloc
-  #./autogen.sh
-  #make 
-  #make install
+  git clone https://github.com/jemalloc/jemalloc
+  cd jemalloc
+  ./autogen.sh
+  make 
+  make install
 
 
 %environment
-  #export LD_PRELOAD=/usr/local/lib/libjemalloc.so:/opt/conda/lib/libiomp5.so:$LD_PRELOAD
+  export LD_PRELOAD=/usr/local/lib/libjemalloc.so:/opt/conda/lib/libiomp5.so:$LD_PRELOAD
 
 %runscript
   jupyter-lab --ip 0.0.0.0 --allow-root 

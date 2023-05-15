@@ -7,13 +7,13 @@ From: continuumio/miniconda3
 %post
   # Upgrade packages to most recent versions
   apt update 
+  apt install g++ -y
 
   # Upgrade pip
   pip install pip --upgrade
   
   # Install additional packages
   pip install jupyterlab pandas onnx
-  pip install visualdl -i https://mirror.baidu.com/pypi/simple
 
   # Install PyTorch
   pip install torch==2.0.0+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
