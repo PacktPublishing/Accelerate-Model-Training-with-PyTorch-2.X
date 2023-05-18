@@ -23,7 +23,7 @@ From: continuumio/miniconda3
   pip install pip --upgrade
   
   # Install additional packages
-  pip install jupyterlab pandas onnx tensorboard
+  pip install jupyterlab pandas onnx tensorboard matplotlib "ipywidgets>=7.6" plotly==5.14.1 jupyter-dash 
 
   # Install Intel OpenMP
   pip install intel-openmp
