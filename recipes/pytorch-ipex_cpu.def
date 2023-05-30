@@ -4,20 +4,12 @@ From: continuumio/miniconda3
 %labels
   Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
 
-%setup
-  wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | gpg --dearmor | tee /tmp/oneapi-archive-keyring.gpg > /dev/null
-  echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /tmp/oneAPI.list
-
-%files
-  /tmp/oneapi-archive-keyring.gpg /usr/share/keyrings/
-  /tmp/oneAPI.list /etc/apt/sources.list.d/ 
-
 %post
   # Upgrade packages to most recent versions
   apt update 
 
   # Basic
-  #apt install make autoconf gcc -y
+  apt install make autoconf g++ -y
 
   # Upgrade pip
   pip install pip --upgrade
@@ -28,8 +20,11 @@ From: continuumio/miniconda3
   # Install Intel OpenMP
   pip install intel-openmp
 
+  # Install Intel PyTorch Extension
+  pip install intel_extension_for_pytorch -f https://developer.intel.com/ipex-whl-stable-cpu
+
   # Install PyTorch
-  pip install torch==2.0.0+cpu torchvision torchaudio torch_tb_profiler --index-url https://download.pytorch.org/whl/cpu
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
   # Install jemmalloc
   #git clone https://github.com/jemalloc/jemalloc

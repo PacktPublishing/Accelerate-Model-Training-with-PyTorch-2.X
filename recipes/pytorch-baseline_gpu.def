@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%labels
+  Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
+
+%setup
+  cd /tmp
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-archive-keyring.gpg
+
+%post
+  # Upgrade packages to most recent versions
+  apt update 
+  apt install g++ -y
+  
+  # Install CUDA
+  #apt-key del 7fa2af80
+  echo "deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/ /" | tee /etc/apt/sources.list.d/cuda-ubuntu2204-x86_64.list
+  dpkg -i /tmp/cuda-keyring_1.0-1_all.deb
+  mv /tmp/cuda-archive-keyring.gpg /usr/share/keyrings/cuda-archive-keyring.gpg
+  apt update
+  apt install cuda-toolkit -y
+
+  # Upgrade pip
+  pip install pip --upgrade
+  
+  # Install additional packages
+  pip install jupyterlab pandas onnx matplotlib 
+
+  # Install PyTorch
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+%runscript
+  jupyter-lab --ip 0.0.0.0 --allow-root 
