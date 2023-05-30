@@ -1,0 +1,250 @@
+buf0: ExternKernelSchedulerNode(Convolution)
+buf0.writes = [StarDep(name='buf0')]
+buf0.unmet_dependencies = []
+buf0.met_dependencies = [StarDep(name='primals_1'), StarDep(name='primals_9')]
+buf0.node.kernel = aten.convolution
+
+
+buf1: SchedulerNode(ComputedBuffer)
+buf1.writes = [MemoryDep(name='buf1', index=c0, size=(1605632,))]
+buf1.unmet_dependencies = [MemoryDep(name='buf0', index=c0, size=(1605632,))]
+buf1.met_dependencies = [MemoryDep(name='primals_2', index=c1, size=(64, 32, 784))]
+buf1.group.device = cuda:0
+buf1.group.iteration = (1605632, 1)
+buf1.sizes = ([64, 32, 784], [])
+class buf1_loop_body:
+    var_ranges = {z0: 64, z1: 32, z2: 784}
+    index0 = 25088*z0 + 784*z1 + z2
+    index1 = z1
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf0', get_index)
+        get_index_1 = self.get_index('index1')
+        load_1 = ops.load('primals_2', get_index_1)
+        add = ops.add(load, load_1)
+        relu = ops.relu(add)
+        get_index_2 = self.get_index('index0')
+        store = ops.store('buf1', get_index_2, relu, None)
+        return store
+
+
+buf2: SchedulerNode(ComputedBuffer)
+buf2.writes = [MemoryDep(name='buf2', index=c0, size=(401408,))]
+buf2.unmet_dependencies = 
+    [   MemoryDep(name='buf1', index=56*c0 + 2*c1 + 1, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1 + 28, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1 + 29, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1, size=(28672, 14))]
+buf2.met_dependencies = []
+buf2.group.device = cuda:0
+buf2.group.iteration = (401408, 1)
+buf2.sizes = ([28672, 14], [])
+class buf2_loop_body:
+    var_ranges = {z0: 28672, z1: 14}
+    index0 = 56*z0 + 2*z1
+    index1 = 56*z0 + 2*z1 + 1
+    index2 = 56*z0 + 2*z1 + 28
+    index3 = 56*z0 + 2*z1 + 29
+    index4 = 14*z0 + z1
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf1', get_index)
+        get_index_1 = self.get_index('index1')
+        load_1 = ops.load('buf1', get_index_1)
+        maximum = ops.maximum(load_1, load)
+        get_index_2 = self.get_index('index2')
+        load_2 = ops.load('buf1', get_index_2)
+        maximum_1 = ops.maximum(load_2, maximum)
+        get_index_3 = self.get_index('index3')
+        load_3 = ops.load('buf1', get_index_3)
+        maximum_2 = ops.maximum(load_3, maximum_1)
+        get_index_4 = self.get_index('index4')
+        store = ops.store('buf2', get_index_4, maximum_2, None)
+        return store
+
+
+buf3: SchedulerNode(ComputedBuffer)
+buf3.writes = [MemoryDep(name='buf3', index=c0, size=(401408,))]
+buf3.unmet_dependencies = 
+    [   MemoryDep(name='buf1', index=56*c0 + 2*c1 + 1, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1 + 28, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1 + 29, size=(28672, 14)),
+        MemoryDep(name='buf1', index=56*c0 + 2*c1, size=(28672, 14))]
+buf3.met_dependencies = []
+buf3.group.device = cuda:0
+buf3.group.iteration = (401408, 1)
+buf3.sizes = ([2048, 14, 14], [])
+class buf3_loop_body:
+    var_ranges = {z0: 2048, z1: 14, z2: 14}
+    index0 = 784*z0 + 56*z1 + 2*z2
+    index1 = 56*z1 + 2*z2
+    index2 = 784*z0 + 56*z1 + 2*z2 + 1
+    index3 = 56*z1 + 2*z2 + 1
+    index4 = 784*z0 + 56*z1 + 2*z2 + 28
+    index5 = 56*z1 + 2*z2 + 28
+    index6 = 784*z0 + 56*z1 + 2*z2 + 29
+    index7 = 56*z1 + 2*z2 + 29
+    index8 = 196*z0 + 14*z1 + z2
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf1', get_index)
+        get_index_1 = self.get_index('index1')
+        index_expr = ops.index_expr(get_index_1, torch.int64)
+        get_index_2 = self.get_index('index2')
+        load_1 = ops.load('buf1', get_index_2)
+        get_index_3 = self.get_index('index3')
+        index_expr_1 = ops.index_expr(get_index_3, torch.int64)
+        gt = ops.gt(load_1, load)
+        where = ops.where(gt, index_expr_1, index_expr)
+        maximum = ops.maximum(load_1, load)
+        get_index_4 = self.get_index('index4')
+        load_2 = ops.load('buf1', get_index_4)
+        get_index_5 = self.get_index('index5')
+        index_expr_2 = ops.index_expr(get_index_5, torch.int64)
+        gt_1 = ops.gt(load_2, maximum)
+        where_1 = ops.where(gt_1, index_expr_2, where)
+        maximum_1 = ops.maximum(load_2, maximum)
+        get_index_6 = self.get_index('index6')
+        load_3 = ops.load('buf1', get_index_6)
+        get_index_7 = self.get_index('index7')
+        index_expr_3 = ops.index_expr(get_index_7, torch.int64)
+        gt_2 = ops.gt(load_3, maximum_1)
+        where_2 = ops.where(gt_2, index_expr_3, where_1)
+        maximum_2 = ops.maximum(load_3, maximum_1)
+        get_index_8 = self.get_index('index8')
+        store = ops.store('buf3', get_index_8, where_2, None)
+        return store
+
+
+buf4: ExternKernelSchedulerNode(Convolution)
+buf4.writes = [StarDep(name='buf4')]
+buf4.unmet_dependencies = [StarDep(name='buf2')]
+buf4.met_dependencies = [StarDep(name='primals_3')]
+buf4.node.kernel = aten.convolution
+
+
+buf5: SchedulerNode(ComputedBuffer)
+buf5.writes = [MemoryDep(name='buf5', index=c0, size=(802816,))]
+buf5.unmet_dependencies = [MemoryDep(name='buf4', index=c0, size=(802816,))]
+buf5.met_dependencies = [MemoryDep(name='primals_4', index=c1, size=(64, 64, 196))]
+buf5.group.device = cuda:0
+buf5.group.iteration = (802816, 1)
+buf5.sizes = ([64, 64, 196], [])
+class buf5_loop_body:
+    var_ranges = {z0: 64, z1: 64, z2: 196}
+    index0 = 12544*z0 + 196*z1 + z2
+    index1 = z1
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf4', get_index)
+        get_index_1 = self.get_index('index1')
+        load_1 = ops.load('primals_4', get_index_1)
+        add = ops.add(load, load_1)
+        relu = ops.relu(add)
+        get_index_2 = self.get_index('index0')
+        store = ops.store('buf5', get_index_2, relu, None)
+        return store
+
+
+buf6: SchedulerNode(ComputedBuffer)
+buf6.writes = [MemoryDep(name='buf6', index=c0, size=(200704,))]
+buf6.unmet_dependencies = 
+    [   MemoryDep(name='buf5', index=28*c0 + 2*c1 + 1, size=(28672, 7)),
+        MemoryDep(name='buf5', index=28*c0 + 2*c1 + 14, size=(28672, 7)),
+        MemoryDep(name='buf5', index=28*c0 + 2*c1 + 15, size=(28672, 7)),
+        MemoryDep(name='buf5', index=28*c0 + 2*c1, size=(28672, 7))]
+buf6.met_dependencies = []
+buf6.group.device = cuda:0
+buf6.group.iteration = (200704, 1)
+buf6.sizes = ([4096, 7, 7], [])
+class buf6_loop_body:
+    var_ranges = {z0: 4096, z1: 7, z2: 7}
+    index0 = 196*z0 + 28*z1 + 2*z2
+    index1 = 28*z1 + 2*z2
+    index2 = 196*z0 + 28*z1 + 2*z2 + 1
+    index3 = 28*z1 + 2*z2 + 1
+    index4 = 196*z0 + 28*z1 + 2*z2 + 14
+    index5 = 28*z1 + 2*z2 + 14
+    index6 = 196*z0 + 28*z1 + 2*z2 + 15
+    index7 = 28*z1 + 2*z2 + 15
+    index8 = 49*z0 + 7*z1 + z2
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf5', get_index)
+        get_index_1 = self.get_index('index1')
+        index_expr = ops.index_expr(get_index_1, torch.int64)
+        get_index_2 = self.get_index('index2')
+        load_1 = ops.load('buf5', get_index_2)
+        get_index_3 = self.get_index('index3')
+        index_expr_1 = ops.index_expr(get_index_3, torch.int64)
+        gt = ops.gt(load_1, load)
+        where = ops.where(gt, index_expr_1, index_expr)
+        maximum = ops.maximum(load_1, load)
+        get_index_4 = self.get_index('index4')
+        load_2 = ops.load('buf5', get_index_4)
+        get_index_5 = self.get_index('index5')
+        index_expr_2 = ops.index_expr(get_index_5, torch.int64)
+        gt_1 = ops.gt(load_2, maximum)
+        where_1 = ops.where(gt_1, index_expr_2, where)
+        maximum_1 = ops.maximum(load_2, maximum)
+        get_index_6 = self.get_index('index6')
+        load_3 = ops.load('buf5', get_index_6)
+        get_index_7 = self.get_index('index7')
+        index_expr_3 = ops.index_expr(get_index_7, torch.int64)
+        gt_2 = ops.gt(load_3, maximum_1)
+        where_2 = ops.where(gt_2, index_expr_3, where_1)
+        maximum_2 = ops.maximum(load_3, maximum_1)
+        get_index_8 = self.get_index('index8')
+        store = ops.store('buf6', get_index_8, where_2, None)
+        return store
+
+
+buf7: SchedulerNode(ComputedBuffer)
+buf7.writes = [MemoryDep(name='buf7', index=c0, size=(200704,))]
+buf7.unmet_dependencies = 
+    [   MemoryDep(name='buf5', index=12544*c0 + 28*(c1//7) + 2*ModularIndexing(c1, 1, 7) + 1, size=(64, 3136)),
+        MemoryDep(name='buf5', index=12544*c0 + 28*(c1//7) + 2*ModularIndexing(c1, 1, 7) + 14, size=(64, 3136)),
+        MemoryDep(name='buf5', index=12544*c0 + 28*(c1//7) + 2*ModularIndexing(c1, 1, 7) + 15, size=(64, 3136)),
+        MemoryDep(name='buf5', index=12544*c0 + 28*(c1//7) + 2*ModularIndexing(c1, 1, 7), size=(64, 3136))]
+buf7.met_dependencies = []
+buf7.group.device = cuda:0
+buf7.group.iteration = (200704, 1)
+buf7.sizes = ([64, 3136], [])
+class buf7_loop_body:
+    var_ranges = {z0: 64, z1: 3136}
+    index0 = 12544*z0 + 28*(z1//7) + 2*ModularIndexing(z1, 1, 7)
+    index1 = 12544*z0 + 28*(z1//7) + 2*ModularIndexing(z1, 1, 7) + 1
+    index2 = 12544*z0 + 28*(z1//7) + 2*ModularIndexing(z1, 1, 7) + 14
+    index3 = 12544*z0 + 28*(z1//7) + 2*ModularIndexing(z1, 1, 7) + 15
+    index4 = 3136*z0 + z1
+    def body(self, ops):
+        get_index = self.get_index('index0')
+        load = ops.load('buf5', get_index)
+        get_index_1 = self.get_index('index1')
+        load_1 = ops.load('buf5', get_index_1)
+        maximum = ops.maximum(load_1, load)
+        get_index_2 = self.get_index('index2')
+        load_2 = ops.load('buf5', get_index_2)
+        maximum_1 = ops.maximum(load_2, maximum)
+        get_index_3 = self.get_index('index3')
+        load_3 = ops.load('buf5', get_index_3)
+        maximum_2 = ops.maximum(load_3, maximum_1)
+        get_index_4 = self.get_index('index4')
+        store = ops.store('buf7', get_index_4, maximum_2, None)
+        return store
+
+
+buf8: ExternKernelSchedulerNode(ExternKernelOut)
+buf8.writes = [StarDep(name='buf8')]
+buf8.unmet_dependencies = [StarDep(name='buf7')]
+buf8.met_dependencies = [StarDep(name='primals_5'), StarDep(name='primals_6')]
+buf8.node.kernel = extern_kernels.addmm
+
+
+buf9: ExternKernelSchedulerNode(ExternKernelOut)
+buf9.writes = [StarDep(name='buf9')]
+buf9.unmet_dependencies = [StarDep(name='buf8')]
+buf9.met_dependencies = [StarDep(name='primals_7'), StarDep(name='primals_8')]
+buf9.node.kernel = extern_kernels.addmm
+
+

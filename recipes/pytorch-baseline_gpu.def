@@ -31,5 +31,13 @@ From: continuumio/miniconda3
   # Install PyTorch
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
+%environment
+  export CUDA_HOME="/usr/local/cuda"
+  export PATH="$CUDA_HOME/bin:$CUDA_HOME/libnvvp:$PATH"
+  export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib:$CUDA_HOME/targets/x86_64-linux/lib/stubs:$LD_LIBRARY_PATH"
+  export LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib:$CUDA_HOME/targets/x86_64-linux/lib/stubs:$LIBRARY_PATH"
+  export LDFLAGS="-L$CUDA_HOME/lib64:$LDFLAGS:"
+  export CPPFLAGS="-I$CUDA_HOME/include:$CPPFLAGS"
+
 %runscript
   jupyter-lab --ip 0.0.0.0 --allow-root 
