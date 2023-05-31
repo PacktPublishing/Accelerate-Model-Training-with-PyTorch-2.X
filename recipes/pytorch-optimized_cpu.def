@@ -17,13 +17,13 @@ From: continuumio/miniconda3
   apt update 
 
   # Basic
-  #apt install make autoconf gcc -y
+  apt install make autoconf gcc g++ -y
 
   # Upgrade pip
   pip install pip --upgrade
   
   # Install additional packages
-  pip install jupyterlab pandas onnx tensorboard matplotlib 
+  pip install jupyterlab pandas onnx tensorboard tensorflow matplotlib 
 
   # Install Intel OpenMP
   pip install intel-openmp

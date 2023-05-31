@@ -1,0 +1,217 @@
+[logging.py:127 INFO] Step 3: torchinductor compiling FORWARDS graph 2
+[scheduler.py:767 DEBUG] removed dead node: buf1
+[scheduler.py:767 DEBUG] removed dead node: buf7
+[scheduler.py:767 DEBUG] removed dead node: buf9
+[scheduler.py:767 DEBUG] removed dead node: buf15
+[scheduler.py:767 DEBUG] removed dead node: buf21
+[scheduler.py:767 DEBUG] removed dead node: buf26
+[scheduler.py:767 DEBUG] removed dead node: buf33
+[scheduler.py:767 DEBUG] removed dead node: buf39
+[scheduler.py:767 DEBUG] removed dead node: buf45
+[scheduler.py:767 DEBUG] removed dead node: buf51
+[scheduler.py:767 DEBUG] removed dead node: buf57
+[scheduler.py:767 DEBUG] removed dead node: buf63
+[scheduler.py:767 DEBUG] removed dead node: buf69
+[scheduler.py:767 DEBUG] removed dead node: buf75
+[scheduler.py:767 DEBUG] removed dead node: buf81
+[scheduler.py:767 DEBUG] removed dead node: buf86
+[scheduler.py:767 DEBUG] removed dead node: buf93
+[scheduler.py:767 DEBUG] removed dead node: buf99
+[scheduler.py:767 DEBUG] removed dead node: buf105
+[scheduler.py:767 DEBUG] removed dead node: buf111
+[scheduler.py:767 DEBUG] removed dead node: buf117
+[scheduler.py:767 DEBUG] removed dead node: buf123
+[scheduler.py:767 DEBUG] removed dead node: buf129
+[scheduler.py:767 DEBUG] removed dead node: buf135
+[scheduler.py:767 DEBUG] removed dead node: buf141
+[scheduler.py:767 DEBUG] removed dead node: buf147
+[scheduler.py:767 DEBUG] removed dead node: buf153
+[scheduler.py:767 DEBUG] removed dead node: buf159
+[scheduler.py:767 DEBUG] removed dead node: buf164
+[scheduler.py:767 DEBUG] removed dead node: buf171
+[scheduler.py:767 DEBUG] removed dead node: buf177
+[scheduler.py:767 DEBUG] removed dead node: buf183
+[scheduler.py:767 DEBUG] removed dead node: buf189
+[scheduler.py:767 DEBUG] removed dead node: buf195
+[scheduler.py:767 DEBUG] removed dead node: buf201
+[scheduler.py:767 DEBUG] removed dead node: buf207
+[scheduler.py:767 DEBUG] removed dead node: buf213
+[scheduler.py:767 DEBUG] removed dead node: buf219
+[scheduler.py:767 DEBUG] removed dead node: buf225
+[scheduler.py:767 DEBUG] removed dead node: buf231
+[scheduler.py:767 DEBUG] removed dead node: buf237
+[scheduler.py:767 DEBUG] removed dead node: buf243
+[scheduler.py:767 DEBUG] removed dead node: buf249
+[scheduler.py:767 DEBUG] removed dead node: buf255
+[scheduler.py:767 DEBUG] removed dead node: buf261
+[scheduler.py:767 DEBUG] removed dead node: buf267
+[scheduler.py:767 DEBUG] removed dead node: buf273
+[scheduler.py:767 DEBUG] removed dead node: buf278
+[scheduler.py:767 DEBUG] removed dead node: buf285
+[scheduler.py:767 DEBUG] removed dead node: buf291
+[scheduler.py:767 DEBUG] removed dead node: buf297
+[scheduler.py:767 DEBUG] removed dead node: buf303
+[scheduler.py:767 DEBUG] removed dead node: buf309
+[scheduler.py:767 DEBUG] removed dead node: buf315
+[scheduler.py:1089 DEBUG] remove_buffer('buf321')
+[scheduler.py:1089 DEBUG] remove_buffer('buf321')
+[scheduler.py:1089 DEBUG] remove_buffer('buf327')
+[scheduler.py:1089 DEBUG] remove_buffer('buf327')
+[scheduler.py:1089 DEBUG] remove_buffer('buf333')
+[scheduler.py:1089 DEBUG] remove_buffer('buf333')
+[scheduler.py:1089 DEBUG] remove_buffer('buf339')
+[scheduler.py:1089 DEBUG] remove_buffer('buf339')
+[scheduler.py:1089 DEBUG] remove_buffer('buf345')
+[scheduler.py:1089 DEBUG] remove_buffer('buf345')
+[scheduler.py:1089 DEBUG] remove_buffer('buf351')
+[scheduler.py:1089 DEBUG] remove_buffer('buf351')
+[scheduler.py:1089 DEBUG] remove_buffer('buf357')
+[scheduler.py:1089 DEBUG] remove_buffer('buf357')
+[scheduler.py:1089 DEBUG] remove_buffer('buf363')
+[scheduler.py:1089 DEBUG] remove_buffer('buf363')
+[scheduler.py:1089 DEBUG] remove_buffer('buf369')
+[scheduler.py:1089 DEBUG] remove_buffer('buf369')
+[scheduler.py:1089 DEBUG] remove_buffer('buf375')
+[scheduler.py:1089 DEBUG] remove_buffer('buf375')
+[scheduler.py:1089 DEBUG] remove_buffer('buf381')
+[scheduler.py:1089 DEBUG] remove_buffer('buf381')
+[scheduler.py:1089 DEBUG] remove_buffer('buf387')
+[scheduler.py:1089 DEBUG] remove_buffer('buf387')
+[scheduler.py:1089 DEBUG] remove_buffer('buf393')
+[scheduler.py:1089 DEBUG] remove_buffer('buf393')
+[scheduler.py:1089 DEBUG] remove_buffer('buf399')
+[scheduler.py:1089 DEBUG] remove_buffer('buf399')
+[scheduler.py:1089 DEBUG] remove_buffer('buf405')
+[scheduler.py:1089 DEBUG] remove_buffer('buf405')
+[scheduler.py:1089 DEBUG] remove_buffer('buf411')
+[scheduler.py:1089 DEBUG] remove_buffer('buf411')
+[scheduler.py:1089 DEBUG] remove_buffer('buf417')
+[scheduler.py:1089 DEBUG] remove_buffer('buf417')
+[scheduler.py:1089 DEBUG] remove_buffer('buf423')
+[scheduler.py:1089 DEBUG] remove_buffer('buf423')
+[scheduler.py:1089 DEBUG] remove_buffer('buf429')
+[scheduler.py:1089 DEBUG] remove_buffer('buf429')
+[scheduler.py:1089 DEBUG] remove_buffer('buf435')
+[scheduler.py:1089 DEBUG] remove_buffer('buf435')
+[scheduler.py:1089 DEBUG] remove_buffer('buf441')
+[scheduler.py:1089 DEBUG] remove_buffer('buf441')
+[scheduler.py:1089 DEBUG] remove_buffer('buf447')
+[scheduler.py:1089 DEBUG] remove_buffer('buf447')
+[scheduler.py:1089 DEBUG] remove_buffer('buf453')
+[scheduler.py:1089 DEBUG] remove_buffer('buf453')
+[scheduler.py:1089 DEBUG] remove_buffer('buf459')
+[scheduler.py:1089 DEBUG] remove_buffer('buf459')
+[scheduler.py:1089 DEBUG] remove_buffer('buf465')
+[scheduler.py:1089 DEBUG] remove_buffer('buf465')
+[scheduler.py:1089 DEBUG] remove_buffer('buf471')
+[scheduler.py:1089 DEBUG] remove_buffer('buf471')
+[scheduler.py:1089 DEBUG] remove_buffer('buf477')
+[scheduler.py:1089 DEBUG] remove_buffer('buf477')
+[scheduler.py:1089 DEBUG] remove_buffer('buf483')
+[scheduler.py:1089 DEBUG] remove_buffer('buf483')
+[scheduler.py:1089 DEBUG] remove_buffer('buf489')
+[scheduler.py:1089 DEBUG] remove_buffer('buf489')
+[scheduler.py:1089 DEBUG] remove_buffer('buf495')
+[scheduler.py:1089 DEBUG] remove_buffer('buf495')
+[scheduler.py:1089 DEBUG] remove_buffer('buf501')
+[scheduler.py:1089 DEBUG] remove_buffer('buf501')
+[scheduler.py:1089 DEBUG] remove_buffer('buf507')
+[scheduler.py:1089 DEBUG] remove_buffer('buf507')
+[scheduler.py:1089 DEBUG] remove_buffer('buf513')
+[scheduler.py:1089 DEBUG] remove_buffer('buf513')
+[scheduler.py:1089 DEBUG] remove_buffer('buf519')
+[scheduler.py:1089 DEBUG] remove_buffer('buf519')
+[scheduler.py:1089 DEBUG] remove_buffer('buf525')
+[scheduler.py:1089 DEBUG] remove_buffer('buf525')
+[scheduler.py:1089 DEBUG] remove_buffer('buf531')
+[scheduler.py:1089 DEBUG] remove_buffer('buf531')
+[scheduler.py:1089 DEBUG] remove_buffer('buf537')
+[scheduler.py:1089 DEBUG] remove_buffer('buf537')
+[scheduler.py:1089 DEBUG] remove_buffer('buf543')
+[scheduler.py:1089 DEBUG] remove_buffer('buf543')
+[scheduler.py:1089 DEBUG] remove_buffer('buf549')
+[scheduler.py:1089 DEBUG] remove_buffer('buf549')
+[scheduler.py:1089 DEBUG] remove_buffer('buf555')
+[scheduler.py:1089 DEBUG] remove_buffer('buf555')
+[scheduler.py:1089 DEBUG] remove_buffer('buf561')
+[scheduler.py:1089 DEBUG] remove_buffer('buf561')
+[scheduler.py:1089 DEBUG] remove_buffer('buf567')
+[scheduler.py:1089 DEBUG] remove_buffer('buf567')
+[scheduler.py:1089 DEBUG] remove_buffer('buf573')
+[scheduler.py:1089 DEBUG] remove_buffer('buf573')
+[scheduler.py:1089 DEBUG] remove_buffer('buf579')
+[scheduler.py:1089 DEBUG] remove_buffer('buf579')
+[scheduler.py:1089 DEBUG] remove_buffer('buf585')
+[scheduler.py:1089 DEBUG] remove_buffer('buf585')
+[scheduler.py:1089 DEBUG] remove_buffer('buf591')
+[scheduler.py:1089 DEBUG] remove_buffer('buf591')
+[scheduler.py:1089 DEBUG] remove_buffer('buf597')
+[scheduler.py:1089 DEBUG] remove_buffer('buf597')
+[scheduler.py:1089 DEBUG] remove_buffer('buf603')
+[scheduler.py:1089 DEBUG] remove_buffer('buf603')
+[scheduler.py:1089 DEBUG] remove_buffer('buf609')
+[scheduler.py:1089 DEBUG] remove_buffer('buf609')
+[scheduler.py:1089 DEBUG] remove_buffer('buf615')
+[scheduler.py:1089 DEBUG] remove_buffer('buf615')
+[scheduler.py:1089 DEBUG] remove_buffer('buf621')
+[scheduler.py:1089 DEBUG] remove_buffer('buf621')
+[scheduler.py:1089 DEBUG] remove_buffer('buf627')
+[scheduler.py:1089 DEBUG] remove_buffer('buf627')
+[scheduler.py:1089 DEBUG] remove_buffer('buf633')
+[scheduler.py:1089 DEBUG] remove_buffer('buf633')
+[scheduler.py:1089 DEBUG] remove_buffer('buf325')
+[scheduler.py:1089 DEBUG] remove_buffer('buf331')
+[scheduler.py:1089 DEBUG] remove_buffer('buf337')
+[scheduler.py:1089 DEBUG] remove_buffer('buf343')
+[scheduler.py:1089 DEBUG] remove_buffer('buf349')
+[scheduler.py:1089 DEBUG] remove_buffer('buf355')
+[scheduler.py:1089 DEBUG] remove_buffer('buf361')
+[scheduler.py:1089 DEBUG] remove_buffer('buf367')
+[scheduler.py:1089 DEBUG] remove_buffer('buf373')
+[scheduler.py:1089 DEBUG] remove_buffer('buf379')
+[scheduler.py:1089 DEBUG] remove_buffer('buf385')
+[scheduler.py:1089 DEBUG] remove_buffer('buf391')
+[scheduler.py:1089 DEBUG] remove_buffer('buf397')
+[scheduler.py:1089 DEBUG] remove_buffer('buf403')
+[scheduler.py:1089 DEBUG] remove_buffer('buf409')
+[scheduler.py:1089 DEBUG] remove_buffer('buf415')
+[scheduler.py:1089 DEBUG] remove_buffer('buf421')
+[scheduler.py:1089 DEBUG] remove_buffer('buf427')
+[scheduler.py:1089 DEBUG] remove_buffer('buf433')
+[scheduler.py:1089 DEBUG] remove_buffer('buf439')
+[scheduler.py:1089 DEBUG] remove_buffer('buf445')
+[scheduler.py:1089 DEBUG] remove_buffer('buf451')
+[scheduler.py:1089 DEBUG] remove_buffer('buf457')
+[scheduler.py:1089 DEBUG] remove_buffer('buf463')
+[scheduler.py:1089 DEBUG] remove_buffer('buf469')
+[scheduler.py:1089 DEBUG] remove_buffer('buf475')
+[scheduler.py:1089 DEBUG] remove_buffer('buf481')
+[scheduler.py:1089 DEBUG] remove_buffer('buf487')
+[scheduler.py:1089 DEBUG] remove_buffer('buf493')
+[scheduler.py:1089 DEBUG] remove_buffer('buf499')
+[scheduler.py:1089 DEBUG] remove_buffer('buf505')
+[scheduler.py:1089 DEBUG] remove_buffer('buf511')
+[scheduler.py:1089 DEBUG] remove_buffer('buf517')
+[scheduler.py:1089 DEBUG] remove_buffer('buf523')
+[scheduler.py:1089 DEBUG] remove_buffer('buf529')
+[scheduler.py:1089 DEBUG] remove_buffer('buf535')
+[scheduler.py:1089 DEBUG] remove_buffer('buf541')
+[scheduler.py:1089 DEBUG] remove_buffer('buf547')
+[scheduler.py:1089 DEBUG] remove_buffer('buf553')
+[scheduler.py:1089 DEBUG] remove_buffer('buf559')
+[scheduler.py:1089 DEBUG] remove_buffer('buf565')
+[scheduler.py:1089 DEBUG] remove_buffer('buf571')
+[scheduler.py:1089 DEBUG] remove_buffer('buf577')
+[scheduler.py:1089 DEBUG] remove_buffer('buf583')
+[scheduler.py:1089 DEBUG] remove_buffer('buf589')
+[scheduler.py:1089 DEBUG] remove_buffer('buf595')
+[scheduler.py:1089 DEBUG] remove_buffer('buf601')
+[scheduler.py:1089 DEBUG] remove_buffer('buf607')
+[scheduler.py:1089 DEBUG] remove_buffer('buf613')
+[scheduler.py:1089 DEBUG] remove_buffer('buf619')
+[scheduler.py:1089 DEBUG] remove_buffer('buf625')
+[scheduler.py:1089 DEBUG] remove_buffer('buf631')
+[scheduler.py:1089 DEBUG] remove_buffer('buf637')
+[graph.py:580 INFO] Output code: /tmp/torchinductor_xmmw/av/cave2nk3tx6oikcjz5lnnh4a4yuffpglho2224scaa4bpgwzym7o.py
+[logging.py:127 INFO] Step 3: torchinductor done compiling FORWARDS graph 2
+[debug.py:339 WARNING] model__2_inference_6 debug trace: /u/xmmw/book/Accelerate-Model-Training-with-PyTorch-2.0/chapters/ch3/torch_compile_debug/run_2023_05_31_08_26_11_811084-pid_1880336/aot_torchinductor/model__2_inference_6.4

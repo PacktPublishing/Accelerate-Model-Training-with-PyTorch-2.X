@@ -1,0 +1,651 @@
+skipping __init__ /opt/conda/lib/python3.10/contextlib.py
+skipping __enter__ /opt/conda/lib/python3.10/contextlib.py
+skipping __init__ /opt/conda/lib/python3.10/contextlib.py
+skipping __enter__ /opt/conda/lib/python3.10/contextlib.py
+skipping enable_dynamic /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_1878944/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
+TRACED GRAPH
+ __compiled_fn_0 <eval_with_key>.5 opcode       name           target         args                     kwargs
+-----------  -------------  -------------  -----------------------  --------
+placeholder  x              x              ()                       {}
+call_module  self_layer1_0  self_layer1_0  (x,)                     {}
+call_module  self_layer1_1  self_layer1_1  (self_layer1_0,)         {}
+call_module  self_layer1_2  self_layer1_2  (self_layer1_1,)         {}
+call_module  self_layer2_0  self_layer2_0  (self_layer1_2,)         {}
+call_module  self_layer2_1  self_layer2_1  (self_layer2_0,)         {}
+call_module  self_layer2_2  self_layer2_2  (self_layer2_1,)         {}
+call_method  reshape        reshape        (self_layer2_2, 64, -1)  {}
+call_module  self_fc1       self_fc1       (reshape,)               {}
+call_module  self_fc2       self_fc2       (self_fc1,)              {}
+output       output         output         ((self_fc2,),)           {}
+
+ORIGINAL BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 19           0 LOAD_FAST                0 (self)
+              2 LOAD_METHOD              0 (layer1)
+              4 LOAD_FAST                1 (x)
+              6 CALL_METHOD              1
+              8 STORE_FAST               2 (out)
+
+ 20          10 LOAD_FAST                0 (self)
+             12 LOAD_METHOD              1 (layer2)
+             14 LOAD_FAST                2 (out)
+             16 CALL_METHOD              1
+             18 STORE_FAST               2 (out)
+
+ 21          20 LOAD_FAST                2 (out)
+             22 LOAD_METHOD              2 (reshape)
+             24 LOAD_FAST                2 (out)
+             26 LOAD_METHOD              3 (size)
+             28 LOAD_CONST               1 (0)
+             30 CALL_METHOD              1
+             32 LOAD_CONST               2 (-1)
+             34 CALL_METHOD              2
+             36 STORE_FAST               2 (out)
+
+ 22          38 LOAD_FAST                0 (self)
+             40 LOAD_METHOD              4 (fc1)
+             42 LOAD_FAST                2 (out)
+             44 CALL_METHOD              1
+             46 STORE_FAST               2 (out)
+
+ 23          48 LOAD_FAST                0 (self)
+             50 LOAD_METHOD              5 (fc2)
+             52 LOAD_FAST                2 (out)
+             54 CALL_METHOD              1
+             56 STORE_FAST               2 (out)
+
+ 24          58 LOAD_FAST                2 (out)
+             60 RETURN_VALUE
+
+ 
+MODIFIED BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 18           0 LOAD_GLOBAL              6 (__compiled_fn_0)
+              2 LOAD_FAST                1 (x)
+              4 CALL_FUNCTION            1
+              6 UNPACK_SEQUENCE          1
+              8 RETURN_VALUE
+
+ 
+GUARDS:
+ - 
+            local 'x' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x14c52b936ac0; to 'Tensor' at 0x14c52b938900>
+                'guarded_class': <weakref at 0x14c56ac5efc0; to 'torch._C._TensorMeta' at 0x5236e10 (Tensor)>
+            }
+            
+ - 
+            local 'self' NN_MODULE
+            {
+                'guard_types': ['ID_MATCH'],
+                'code': ['___check_obj_id(self, 22838577793680)'],
+                'obj_weakref': <weakref at 0x14c5beef36f0; to 'CNN' at 0x14c585510a90>
+                'guarded_class': <weakref at 0x14c585518810; to 'type' at 0x6d168e0 (CNN)>
+            }
+            
+ - 
+            local_nn_module 'self.fc1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.fc2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+skipping _fn /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+skipping nothing /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+skipping __exit__ /opt/conda/lib/python3.10/contextlib.py
+skipping __exit__ /opt/conda/lib/python3.10/contextlib.py
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_1878944/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
+TRACED GRAPH
+ __compiled_fn_1 <eval_with_key>.36 opcode       name           target         args                     kwargs
+-----------  -------------  -------------  -----------------------  --------
+placeholder  x              x              ()                       {}
+call_module  self_layer1_0  self_layer1_0  (x,)                     {}
+call_module  self_layer1_1  self_layer1_1  (self_layer1_0,)         {}
+call_module  self_layer1_2  self_layer1_2  (self_layer1_1,)         {}
+call_module  self_layer2_0  self_layer2_0  (self_layer1_2,)         {}
+call_module  self_layer2_1  self_layer2_1  (self_layer2_0,)         {}
+call_module  self_layer2_2  self_layer2_2  (self_layer2_1,)         {}
+call_method  reshape        reshape        (self_layer2_2, 48, -1)  {}
+call_module  self_fc1       self_fc1       (reshape,)               {}
+call_module  self_fc2       self_fc2       (self_fc1,)              {}
+output       output         output         ((self_fc2,),)           {}
+
+ORIGINAL BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 19           0 LOAD_FAST                0 (self)
+              2 LOAD_METHOD              0 (layer1)
+              4 LOAD_FAST                1 (x)
+              6 CALL_METHOD              1
+              8 STORE_FAST               2 (out)
+
+ 20          10 LOAD_FAST                0 (self)
+             12 LOAD_METHOD              1 (layer2)
+             14 LOAD_FAST                2 (out)
+             16 CALL_METHOD              1
+             18 STORE_FAST               2 (out)
+
+ 21          20 LOAD_FAST                2 (out)
+             22 LOAD_METHOD              2 (reshape)
+             24 LOAD_FAST                2 (out)
+             26 LOAD_METHOD              3 (size)
+             28 LOAD_CONST               1 (0)
+             30 CALL_METHOD              1
+             32 LOAD_CONST               2 (-1)
+             34 CALL_METHOD              2
+             36 STORE_FAST               2 (out)
+
+ 22          38 LOAD_FAST                0 (self)
+             40 LOAD_METHOD              4 (fc1)
+             42 LOAD_FAST                2 (out)
+             44 CALL_METHOD              1
+             46 STORE_FAST               2 (out)
+
+ 23          48 LOAD_FAST                0 (self)
+             50 LOAD_METHOD              5 (fc2)
+             52 LOAD_FAST                2 (out)
+             54 CALL_METHOD              1
+             56 STORE_FAST               2 (out)
+
+ 24          58 LOAD_FAST                2 (out)
+             60 RETURN_VALUE
+
+ 
+MODIFIED BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 18           0 LOAD_GLOBAL              6 (__compiled_fn_1)
+              2 LOAD_FAST                1 (x)
+              4 CALL_FUNCTION            1
+              6 UNPACK_SEQUENCE          1
+              8 RETURN_VALUE
+
+ 
+GUARDS:
+ - 
+            local 'x' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x14c5854ee1b0; to 'Tensor' at 0x14c5854eed40>
+                'guarded_class': <weakref at 0x14c56ac5efc0; to 'torch._C._TensorMeta' at 0x5236e10 (Tensor)>
+            }
+            
+ - 
+            local 'self' NN_MODULE
+            {
+                'guard_types': ['ID_MATCH'],
+                'code': ['___check_obj_id(self, 22838577793680)'],
+                'obj_weakref': <weakref at 0x14c5beef36f0; to 'CNN' at 0x14c585510a90>
+                'guarded_class': <weakref at 0x14c585518810; to 'type' at 0x6d168e0 (CNN)>
+            }
+            
+ - 
+            local_nn_module 'self.fc1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.fc2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_1878944/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_1878944/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
+TRACED GRAPH
+ __compiled_fn_2 <eval_with_key>.67 opcode       name           target         args                     kwargs
+-----------  -------------  -------------  -----------------------  --------
+placeholder  x              x              ()                       {}
+call_module  self_layer1_0  self_layer1_0  (x,)                     {}
+call_module  self_layer1_1  self_layer1_1  (self_layer1_0,)         {}
+call_module  self_layer1_2  self_layer1_2  (self_layer1_1,)         {}
+call_module  self_layer2_0  self_layer2_0  (self_layer1_2,)         {}
+call_module  self_layer2_1  self_layer2_1  (self_layer2_0,)         {}
+call_module  self_layer2_2  self_layer2_2  (self_layer2_1,)         {}
+call_method  reshape        reshape        (self_layer2_2, 16, -1)  {}
+call_module  self_fc1       self_fc1       (reshape,)               {}
+call_module  self_fc2       self_fc2       (self_fc1,)              {}
+output       output         output         ((self_fc2,),)           {}
+
+ORIGINAL BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 19           0 LOAD_FAST                0 (self)
+              2 LOAD_METHOD              0 (layer1)
+              4 LOAD_FAST                1 (x)
+              6 CALL_METHOD              1
+              8 STORE_FAST               2 (out)
+
+ 20          10 LOAD_FAST                0 (self)
+             12 LOAD_METHOD              1 (layer2)
+             14 LOAD_FAST                2 (out)
+             16 CALL_METHOD              1
+             18 STORE_FAST               2 (out)
+
+ 21          20 LOAD_FAST                2 (out)
+             22 LOAD_METHOD              2 (reshape)
+             24 LOAD_FAST                2 (out)
+             26 LOAD_METHOD              3 (size)
+             28 LOAD_CONST               1 (0)
+             30 CALL_METHOD              1
+             32 LOAD_CONST               2 (-1)
+             34 CALL_METHOD              2
+             36 STORE_FAST               2 (out)
+
+ 22          38 LOAD_FAST                0 (self)
+             40 LOAD_METHOD              4 (fc1)
+             42 LOAD_FAST                2 (out)
+             44 CALL_METHOD              1
+             46 STORE_FAST               2 (out)
+
+ 23          48 LOAD_FAST                0 (self)
+             50 LOAD_METHOD              5 (fc2)
+             52 LOAD_FAST                2 (out)
+             54 CALL_METHOD              1
+             56 STORE_FAST               2 (out)
+
+ 24          58 LOAD_FAST                2 (out)
+             60 RETURN_VALUE
+
+ 
+MODIFIED BYTECODE forward /tmp/ipykernel_1878944/3432332073.py line 18 
+ 18           0 LOAD_GLOBAL              6 (__compiled_fn_2)
+              2 LOAD_FAST                1 (x)
+              4 CALL_FUNCTION            1
+              6 UNPACK_SEQUENCE          1
+              8 RETURN_VALUE
+
+ 
+GUARDS:
+ - 
+            local 'x' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x14c5baa1b470; to 'Tensor' at 0x14c560289ad0>
+                'guarded_class': <weakref at 0x14c56ac5efc0; to 'torch._C._TensorMeta' at 0x5236e10 (Tensor)>
+            }
+            
+ - 
+            local 'self' NN_MODULE
+            {
+                'guard_types': ['ID_MATCH'],
+                'code': ['___check_obj_id(self, 22838577793680)'],
+                'obj_weakref': <weakref at 0x14c5beef36f0; to 'CNN' at 0x14c585510a90>
+                'guarded_class': <weakref at 0x14c585518810; to 'type' at 0x6d168e0 (CNN)>
+            }
+            
+ - 
+            local_nn_module 'self.fc1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.fc2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer1[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[0]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[1]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            local_nn_module 'self.layer2[2]' NN_MODULE
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
