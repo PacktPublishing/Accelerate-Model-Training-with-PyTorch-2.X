@@ -1,0 +1,138 @@
+skipping __init__ /opt/conda/lib/python3.10/contextlib.py
+skipping __enter__ /opt/conda/lib/python3.10/contextlib.py
+skipping __init__ /opt/conda/lib/python3.10/contextlib.py
+skipping __enter__ /opt/conda/lib/python3.10/contextlib.py
+skipping enable_dynamic /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_2338884/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
+skipping _fn /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+skipping nothing /opt/conda/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py
+skipping __exit__ /opt/conda/lib/python3.10/contextlib.py
+skipping __exit__ /opt/conda/lib/python3.10/contextlib.py
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_2338884/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
+Step 1: torchdynamo start tracing forward
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:19
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer1 [NNModuleVariable()]
+TRACE LOAD_FAST x [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:20
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR layer2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:21
+TRACE LOAD_FAST out []
+TRACE LOAD_ATTR reshape [TensorVariable()]
+TRACE LOAD_FAST out [GetAttrVariable(TensorVariable(), reshape)]
+TRACE LOAD_ATTR size [GetAttrVariable(TensorVariable(), reshape), TensorVariable()]
+TRACE LOAD_CONST 0 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size)]
+TRACE CALL_FUNCTION 1 [GetAttrVariable(TensorVariable(), reshape), GetAttrVariable(TensorVariable(), size), ConstantVariable(int)]
+TRACE LOAD_CONST -1 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int)]
+TRACE CALL_FUNCTION 2 [GetAttrVariable(TensorVariable(), reshape), ConstantVariable(int), ConstantVariable(int)]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:22
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc1 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:23
+TRACE LOAD_FAST self []
+TRACE LOAD_ATTR fc2 [NNModuleVariable()]
+TRACE LOAD_FAST out [NNModuleVariable()]
+TRACE CALL_FUNCTION 1 [NNModuleVariable(), TensorVariable()]
+TRACE STORE_FAST out [TensorVariable()]
+TRACE starts_line /tmp/ipykernel_2338884/3432332073.py:24
+TRACE LOAD_FAST out []
+TRACE RETURN_VALUE None [TensorVariable()]
+Step 1: torchdynamo done tracing forward (RETURN_VALUE)
+RETURN_VALUE triggered compile
+COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /tmp/ipykernel_2338884/3432332073.py, line 24 in forward>])
+Step 2: calling compiler function debug_wrapper
+Step 2: done compiler function debug_wrapper
