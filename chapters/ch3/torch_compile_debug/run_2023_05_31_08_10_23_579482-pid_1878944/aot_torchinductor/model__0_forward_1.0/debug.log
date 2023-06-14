@@ -1,4 +1,0 @@
-[logging.py:127 INFO] Step 3: torchinductor compiling FORWARDS graph 0
-[graph.py:580 INFO] Output code: /tmp/torchinductor_xmmw/id/cidhz5eultcsac2rwjbx62kocr4j2tfvvm4wd4il7y7x766of72l.py
-[logging.py:127 INFO] Step 3: torchinductor done compiling FORWARDS graph 0
-[debug.py:339 WARNING] model__0_forward_1 debug trace: /u/xmmw/book/Accelerate-Model-Training-with-PyTorch-2.0/chapters/ch3/torch_compile_debug/run_2023_05_31_08_10_23_579482-pid_1878944/aot_torchinductor/model__0_forward_1.0

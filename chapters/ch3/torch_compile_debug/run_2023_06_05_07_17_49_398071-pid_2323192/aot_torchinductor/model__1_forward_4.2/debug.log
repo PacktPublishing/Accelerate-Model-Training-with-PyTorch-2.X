@@ -1,3 +1,0 @@
-[logging.py:127 INFO] Step 3: torchinductor compiling FORWARDS graph 1
-[logging.py:127 INFO] Step 3: torchinductor done compiling FORWARDS graph 1
-[debug.py:339 WARNING] model__1_forward_4 debug trace: /u/xmmw/book/Accelerate-Model-Training-with-PyTorch-2.0/chapters/ch3/torch_compile_debug/run_2023_06_05_07_17_49_398071-pid_2323192/aot_torchinductor/model__1_forward_4.2

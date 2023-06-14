@@ -20,7 +20,7 @@ From: continuumio/miniconda3
   dpkg -i /tmp/cuda-keyring_1.0-1_all.deb
   mv /tmp/cuda-archive-keyring.gpg /usr/share/keyrings/cuda-archive-keyring.gpg
   apt update
-  apt install cuda-toolkit -y
+  apt install cuda-toolkit-12-1 -y
 
   # Upgrade pip
   pip install pip --upgrade
@@ -29,7 +29,7 @@ From: continuumio/miniconda3
   pip install jupyterlab pandas onnx matplotlib 
 
   # Install PyTorch
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+  pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
 
 %environment
   export CUDA_HOME="/usr/local/cuda"

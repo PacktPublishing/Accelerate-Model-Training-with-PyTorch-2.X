@@ -1,4 +1,0 @@
-[logging.py:127 INFO] Step 3: torchinductor compiling BACKWARDS graph 1
-[graph.py:580 INFO] Output code: /tmp/torchinductor_xmmw/xp/cxpb37ttsj5cyvritbucz66xea6i2upinno5u5yqg6k5pncm5j4e.py
-[logging.py:127 INFO] Step 3: torchinductor done compiling BACKWARDS graph 1
-[debug.py:339 WARNING] model__1_backward_5 debug trace: /u/xmmw/book/Accelerate-Model-Training-with-PyTorch-2.0/chapters/ch3/torch_compile_debug/run_2023_05_31_08_10_23_579482-pid_1878944/aot_torchinductor/model__1_backward_5.3

@@ -1,3 +1,0 @@
-[logging.py:127 INFO] Step 3: torchinductor compiling FORWARDS graph 2
-[logging.py:127 INFO] Step 3: torchinductor done compiling FORWARDS graph 2
-[debug.py:339 WARNING] model__2_inference_6 debug trace: /u/xmmw/book/Accelerate-Model-Training-with-PyTorch-2.0/chapters/ch3/torch_compile_debug/run_2023_06_05_07_17_49_398071-pid_2323192/aot_torchinductor/model__2_inference_6.4
