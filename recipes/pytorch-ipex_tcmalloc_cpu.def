@@ -23,7 +23,7 @@ From: continuumio/miniconda3
   pip install pip --upgrade
   
   # Install additional packages
-  pip install jupyterlab pandas onnx tensorboard tensorflow matplotlib 
+  pip install jupyterlab pandas 
 
   # Install Intel OpenMP
   pip install intel-openmp
@@ -34,9 +34,12 @@ From: continuumio/miniconda3
   # Install PyTorch
   pip install torch==2.0.1+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
-
+  # Install Jemalloc
+  conda install -c conda-forge gperftools -y
 
 %environment
+  #export MALLOC_CONF="background_thread:true,metadata_thp:auto,dirty_decay_ms:30000,muzzy_decay_ms:30000,percpu_arena:phycpu,narenas:16"
+  #export LD_PRELOAD=/opt/conda/lib/libjemalloc.so.2:/opt/conda/lib/libiomp5.so:$LD_PRELOAD
   export LD_PRELOAD=/opt/conda/lib/libiomp5.so:$LD_PRELOAD
 
 %runscript

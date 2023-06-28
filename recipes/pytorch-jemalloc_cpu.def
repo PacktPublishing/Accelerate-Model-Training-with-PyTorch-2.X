@@ -25,19 +25,22 @@ From: continuumio/miniconda3
   # Install additional packages
   pip install jupyterlab pandas onnx tensorboard tensorflow matplotlib 
 
-  # Install Intel OpenMP
-  pip install intel-openmp
-
-  # Install IPEX
-  pip install intel_extension_for_pytorch
-
   # Install PyTorch
   pip install torch==2.0.1+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
+  # Install Jemalloc
+  #git clone https://github.com/jemalloc/jemalloc
+  #cd jemalloc
+  #./autogen.sh
+  #make 
+  #make install
+  conda install jemalloc -y 
 
 
 %environment
-  export LD_PRELOAD=/opt/conda/lib/libiomp5.so:$LD_PRELOAD
+  #export MALLOC_CONF="prof:true,prof_prefix:/tmp/jeprof.out,lg_prof_interval:34,lg_prof_sample:20,background_thread:true,metadata_thp:auto,dirty_decay_ms:9000000,muzzy_decay_ms:9000000"
+  export MALLOC_CONF="background_thread:true,metadata_thp:auto"
+  export LD_PRELOAD=/opt/conda/lib/libjemalloc.so.2:$LD_PRELOAD
 
 %runscript
   jupyter-lab --ip 0.0.0.0 --allow-root 

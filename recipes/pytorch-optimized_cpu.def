@@ -29,7 +29,7 @@ From: continuumio/miniconda3
   pip install intel-openmp
 
   # Install PyTorch
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+  pip install torch=2.0.1+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
   # Install jemmalloc
   #git clone https://github.com/jemalloc/jemalloc
