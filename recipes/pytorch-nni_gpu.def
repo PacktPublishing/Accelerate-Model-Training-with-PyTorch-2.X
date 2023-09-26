@@ -27,6 +27,9 @@ From: continuumio/miniconda3
   
   # Install additional packages
   pip install --no-cache-dir jupyterhub jupyterlab batchspawner pandas onnx matplotlib 
+  
+  # Install Microsoft NNI
+  pip install --no-cache-dir nni tensorboard 
 
   # Install PyTorch
   pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
