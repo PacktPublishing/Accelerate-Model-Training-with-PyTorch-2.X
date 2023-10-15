@@ -15,21 +15,28 @@ From: continuumio/miniconda3
   apt install g++ -y
   
   # Install CUDA
-  #apt-key del 7fa2af80
   echo "deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/ /" | tee /etc/apt/sources.list.d/cuda-ubuntu2204-x86_64.list
   dpkg -i /tmp/cuda-keyring_1.0-1_all.deb
   mv /tmp/cuda-archive-keyring.gpg /usr/share/keyrings/cuda-archive-keyring.gpg
   apt update
-  apt install cuda-toolkit-12-1 -y
+  apt install cuda-toolkit-12-2 -y
+  apt install libcudnn8 -y
 
   # Upgrade pip
   pip install pip --upgrade
   
   # Install additional packages
-  pip install --no-cache-dir jupyterhub jupyterlab batchspawner pandas onnx matplotlib 
+  pip install --no-cache-dir torch_tb_profiler jupyterhub jupyterlab batchspawner pandas onnx matplotlib 
 
   # Install PyTorch
-  pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+  pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+
+  # Install Nvidia Deep Learning Profiler
+  pip install --no-cache-dir nvidia-pyindex 
+  pip install --no-cache-dir nvidia-dlprof
+  pip install --no-cache-dir nvidia-dlprofviewer
+  pip install --no-cache-dir nvidia_dlprof_pytorch_nvtx
+
 
 %environment
   export CUDA_HOME="/usr/local/cuda"
