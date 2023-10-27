@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%labels
+  Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
+
+%setup
+  cd /tmp
+  wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
+
+%post
+  # Upgrade packages to most recent versions
+  apt update 
+  apt install g++ -y
+  apt install make
+
+  cd /tmp
+  tar -xvzf openmpi-4.1.6.tar.gz
+  cd openmpi-4.1.6
+  ./configure
+  make
+  make install
+
+  # Upgrade pip
+  pip install pip --upgrade
+  
+  # Install additional packages
+  pip install jupyterlab pandas onnx matplotlib
+
+  # Install OpenMPI
+  pip install openmpi
+
+  # Install PyTorch
+  pip install torch==2.0.1+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+%runscript
+  jupyter-lab --ip 0.0.0.0 --allow-root 
