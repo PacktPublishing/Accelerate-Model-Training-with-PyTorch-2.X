@@ -1,0 +1,58 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%labels
+  Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
+
+%setup
+  cd /tmp
+  wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.0.tar.gz
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-archive-keyring.gpg
+  tar -xvzf openmpi-5.0.0.tar.gz
+  git clone --recursive https://github.com/pytorch/pytorch
+
+%post
+  # Upgrade packages to most recent versions
+  apt update 
+  apt install g++ -y
+  
+  # Install CUDA
+  echo "deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/ /" | tee /etc/apt/sources.list.d/cuda-ubuntu2204-x86_64.list
+  dpkg -i /tmp/cuda-keyring_1.0-1_all.deb
+  mv /tmp/cuda-archive-keyring.gpg /usr/share/keyrings/cuda-archive-keyring.gpg
+  apt update
+  apt install cuda-toolkit-12-2 -y
+  apt install libcudnn8 -y
+
+  # Upgrade pip
+  pip install pip --upgrade
+  
+  # Install additional packages
+  pip install --no-cache-dir torch_tb_profiler jupyterhub jupyterlab batchspawner pandas onnx matplotlib 
+
+  # Install pre-requisites
+  conda install cmake ninja mkl mkl-include -y
+
+  # Install OpenMPI
+  cd /tmp/openmpi-5.0.0
+  ./configure
+  make -j 8
+  make install
+
+  # Installing PyTorch from source
+  cd /tmp/pytorch
+  pip install -r requirements.txt
+  python setup.py install
+  python setup.py develop
+
+%environment
+  export CUDA_HOME="/usr/local/cuda"
+  export PATH="$CUDA_HOME/bin:$CUDA_HOME/libnvvp:$PATH"
+  export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib:$CUDA_HOME/targets/x86_64-linux/lib/stubs:$LD_LIBRARY_PATH"
+  export LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib:$CUDA_HOME/targets/x86_64-linux/lib/stubs:$LIBRARY_PATH"
+  export LDFLAGS="-L$CUDA_HOME/lib64:$LDFLAGS:"
+  export CPPFLAGS="-I$CUDA_HOME/include:$CPPFLAGS"
+
+%runscript
+  jupyter-lab --ip 0.0.0.0 --allow-root 

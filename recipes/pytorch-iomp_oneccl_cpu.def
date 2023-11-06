@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%labels
+  Maicon Melo Alves <maiconmelo.ufrj@gmail.com>
+
+%setup
+
+%files
+
+%post
+  # Upgrade packages to most recent versions
+  apt update 
+
+  # Basic
+  apt install make autoconf gcc g++ -y
+
+  # Upgrade pip
+  pip install pip --upgrade
+  
+  # Install additional packages
+  pip install jupyterlab pandas onnx tensorboard tensorflow matplotlib 
+
+  # Install Intel OpenMP
+  pip install intel-openmp
+
+  # Install PyTorch
+  pip install torch==2.1.0+cpu torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+  # Install Torch-CCL
+  pip install oneccl_bind_pt==2.1.0 --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/cpu/us/
+
+%environment
+  export LD_PRELOAD=/opt/conda/lib/libiomp5.so:$LD_PRELOAD
+  source /opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch/env/vars.sh
+
+%runscript
+  jupyter-lab --ip 0.0.0.0 --allow-root 
