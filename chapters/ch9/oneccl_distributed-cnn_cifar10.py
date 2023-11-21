@@ -1,11 +1,7 @@
 import os
-
-RANK = int(os.environ['RANK'])
-WORLD_SIZE = int(os.environ['WORLD_SIZE'])
 num_threads = 8
-index = RANK * num_threads
+index = int(os.environ['RANK']) * num_threads
 cpu_affinity = "{}-{}".format(index, (index + num_threads) - 1)
-
 os.environ['OMP_NUM_THREADS'] = "{}".format(num_threads)
 os.environ['KMP_AFFINITY'] = "granularity=fine,explicit,proclist=[{}]".format(cpu_affinity)
 os.environ['CCL_PROCESS_LAUNCHER'] = "torch"
@@ -39,7 +35,7 @@ def build_data_loader(data_dir, batch_size, random_seed=42, valid_size=0.1, shuf
  
     return (train_loader, test_loader)
 
-def train(model, train_loader, num_epochs, criterion, optimizer, device):
+def train(model, train_loader, num_epochs, criterion, optimizer, device, my_rank):
     total_steps = len(train_loader)
     print("Steps: {}".format(total_steps))
     for epoch in range(num_epochs):
@@ -63,7 +59,7 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device):
         end = time.time()
                
        
-        print('Worker {} - Epoch [{}/{}], Loss: {:.4f}, time: {} seconds'.format(RANK, epoch+1, num_epochs, loss.item(), int(end-start)))
+        print('Worker {} - Epoch [{}/{}], Loss: {:.4f}, time: {} seconds'.format(my_rank, epoch+1, num_epochs, loss.item(), int(end-start)))
 
 def test(model, test_loader, device):
     with torch.no_grad():
@@ -105,8 +101,6 @@ class CNN(nn.Module):
         out = self.fc2(out)
         return out
 
-def summary():
-    print("Number of threads")
 
 def main():
     parser = argparse.ArgumentParser()
@@ -115,9 +109,8 @@ def main():
     args = parser.parse_args()
 
     # Creating the process group
-    dist.init_process_group(backend=args.backend, rank=RANK, world_size=WORLD_SIZE)
-    #summary()
-    
+    dist.init_process_group(backend=args.backend, init_method="env://")
+       
     # General parameters
     data_dir = '/tmp'
     device = "cpu"
@@ -143,11 +136,11 @@ def main():
     # Training 
     print("Worker {} - Start training\n".format(RANK))
     start = time.time()
-    train(ddp_model, train_loader, num_epochs, criterion, optimizer, device)
+    train(ddp_model, train_loader, num_epochs, criterion, optimizer, device, my_rank)
     end = time.time()
     print('Training time: {} seconds'.format(int(end-start)))
 
-    if RANK == 0:
+    if my_rank == 0:
         test(ddp_model, test_loader, device)
 
     # Destroying the process group

@@ -8,9 +8,8 @@ From: continuumio/miniconda3
   cd /tmp
   wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.0.tar.gz
   tar -xvzf openmpi-5.0.0.tar.gz
-  git clone --recursive https://github.com/pytorch/pytorch
+  git clone https://github.com/pytorch/pytorch
   
-
 %post
   # Upgrade packages to most recent versions
   apt update 
@@ -24,7 +23,7 @@ From: continuumio/miniconda3
 
   # Install torchvision
   pip install torchvision --index-url https://download.pytorch.org/whl/cpu
-  pip uninstall torch
+  pip uninstall torch -y 
 
   # Install pre-requisites 
   conda install cmake ninja mkl mkl-include -y
@@ -34,10 +33,10 @@ From: continuumio/miniconda3
   ./configure --prefix=/usr/local/openmpi
   make -j 32
   make install
-  export LD_LIBRARY_PATH="/usr/local/openmpi/lib:$LD_LIBRARY_PATH"
+  echo "/usr/local/openmpi/lib" >>  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
   ldconfig
 
-  # Installing PyTorch from source
+  # Install PyTorch from source
   cd /tmp/pytorch
   pip install -r requirements.txt
   python setup.py install
@@ -47,7 +46,6 @@ From: continuumio/miniconda3
   export PATH="/usr/local/openmpi/bin:$PATH"
   export LD_LIBRARY_PATH="/usr/local/openmpi/lib:$LD_LIBRARY_PATH"
   export LIBRARY_PATH="/usr/local/openmpi/lib:$LIBRARY_PATH"
-
 
 %runscript
   jupyter-lab --ip 0.0.0.0 --allow-root 

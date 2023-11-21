@@ -1,9 +1,7 @@
 import os
-num_threads = 8
-index = int(os.environ['RANK']) * num_threads
-cpu_affinity = "{}-{}".format(index, (index + num_threads) - 1)
-os.environ['OMP_NUM_THREADS'] = "{}".format(num_threads)
-os.environ['KMP_AFFINITY'] = "granularity=fine,explicit,proclist=[{}]".format(cpu_affinity)
+os.environ['OMP_NUM_THREADS'] = "8"
+os.environ['KMP_AFFINITY'] = "granularity=fine,compact,1,0"
+os.environ['NCCL_DEBUG'] = "trace"
 
 import time
 import argparse
@@ -19,8 +17,8 @@ from torch.utils.data.distributed import DistributedSampler
 
 def build_data_loader(data_dir, batch_size, random_seed=42, valid_size=0.1, shuffle=True, test=False):
     transform = transforms.Compose([transforms.ToTensor()])
-    transform.crop_size=224
-    transform.resize_size=224
+    transform.crop_size=512
+    transform.resize_size=512
     
     train_dataset = datasets.CIFAR10(root=data_dir, train=True, download=True, transform=transform)
     test_dataset = datasets.CIFAR10(root=data_dir, train=False, download=True, transform=transform)
@@ -52,7 +50,7 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device, my_rank
             optimizer.step()
             #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
-
+       
         print('Worker {} - Epoch [{}/{}], Loss: {:.4f}, time: {} seconds'.format(my_rank, epoch+1, num_epochs, loss.item(), int(end-start)))
 
 def test(model, test_loader, device):
@@ -102,18 +100,24 @@ def main():
     args = parser.parse_args()
 
     # Creating the process group
+    os.environ['RANK'] = os.environ['OMPI_COMM_WORLD_RANK']
+    os.environ['WORLD_SIZE'] = os.environ['OMPI_COMM_WORLD_SIZE']
     dist.init_process_group(backend=args.backend, init_method="env://")
     my_rank = dist.get_rank()
+
+    # Device
+    #device = my_rank % torch.cuda.device_count()
+    device = int(os.environ['OMPI_COMM_WORLD_LOCAL_RANK'])
     
+
     # General parameters
     data_dir = '/tmp'
-    device = "cpu"
-
+    
     # Hyperparameters
-    lr = 0.00001
+    lr = 0.0001
     weight_decay = 0.005
-    batch_size = 32
-    num_epochs = 5 
+    batch_size = 256
+    num_epochs = 25 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam
 
@@ -121,21 +125,22 @@ def main():
     train_loader, test_loader = build_data_loader(data_dir=data_dir, batch_size=batch_size)
 
     # Model
-    model = CNN()
+    weights = models.EfficientNet_B7_Weights.DEFAULT
+    net = models.efficientnet_b7(weights=weights)
+    model = net.to(device)
     ddp_model = DDP(model)
    
     # Optimizer
     optimizer = optimizer(ddp_model.parameters(), lr, weight_decay=weight_decay)
 
     # Training 
-    print("Worker {} - Start training\n".format(my_rank))
+    print("Worker {} - Start training on GPU {}\n".format(my_rank, device))
     start = time.time()
     train(ddp_model, train_loader, num_epochs, criterion, optimizer, device, my_rank)
     end = time.time()
     print('Training time: {} seconds'.format(int(end-start)))
 
-    if my_rank == 0:
-        test(ddp_model, test_loader, device)
+    test(ddp_model, test_loader, device)
 
     # Destroying the process group
     dist.destroy_process_group()

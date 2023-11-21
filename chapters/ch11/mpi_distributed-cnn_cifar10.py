@@ -1,9 +1,9 @@
 import os
-num_threads = 8
-index = int(os.environ['RANK']) * num_threads
-cpu_affinity = "{}-{}".format(index, (index + num_threads) - 1)
-os.environ['OMP_NUM_THREADS'] = "{}".format(num_threads)
-os.environ['KMP_AFFINITY'] = "granularity=fine,explicit,proclist=[{}]".format(cpu_affinity)
+os.environ['OMP_NUM_THREADS'] = "16"
+os.environ['OMP_DISPLAY_ENV'] = "TRUE"
+os.environ['OMP_PROC_BIND'] = "TRUE"
+os.environ['OMP_SCHEDULE'] = "STATIC"
+os.environ['GOMP_CPU_AFFINITY'] = "0-15"
 
 import time
 import argparse
@@ -52,7 +52,7 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device, my_rank
             optimizer.step()
             #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
-
+       
         print('Worker {} - Epoch [{}/{}], Loss: {:.4f}, time: {} seconds'.format(my_rank, epoch+1, num_epochs, loss.item(), int(end-start)))
 
 def test(model, test_loader, device):
@@ -104,7 +104,7 @@ def main():
     # Creating the process group
     dist.init_process_group(backend=args.backend, init_method="env://")
     my_rank = dist.get_rank()
-    
+           
     # General parameters
     data_dir = '/tmp'
     device = "cpu"

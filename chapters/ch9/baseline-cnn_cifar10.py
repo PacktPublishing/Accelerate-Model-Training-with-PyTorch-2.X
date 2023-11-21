@@ -2,7 +2,6 @@ import os
 os.environ['OMP_NUM_THREADS'] = "16"
 os.environ['KMP_AFFINITY'] = "granularity=fine,compact,1,0"
 
-
 import time
 import numpy as np
 import torch
