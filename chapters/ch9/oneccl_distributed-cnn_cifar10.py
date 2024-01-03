@@ -7,7 +7,6 @@ os.environ['KMP_AFFINITY'] = "granularity=fine,explicit,proclist=[{}]".format(cp
 os.environ['CCL_PROCESS_LAUNCHER'] = "torch"
 os.environ['CCL_ATL_SHM'] = "1"
 os.environ['CCL_ATL_TRANSPORT'] = "ofi"
-os.environ['FI_PROVIDER'] = "tcp"
 
 import time
 import argparse
