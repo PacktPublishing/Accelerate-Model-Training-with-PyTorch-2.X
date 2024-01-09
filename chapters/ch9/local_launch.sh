@@ -1,0 +1,7 @@
+TRAINING_SCRIPT=$1 
+NPROC_PER_NODE=$2 
+NNODES= "1" 
+MASTER_ADDR= "localhost" 
+TORCHRUN_COMMAND="torchrun --nnodes $NNODES --nproc-per-node $NPROC_PER_NODE --master-addr $MASTER_ADDR $TRAINING_SCRIPT" 
+
+$TORCHRUN_COMMAND 
