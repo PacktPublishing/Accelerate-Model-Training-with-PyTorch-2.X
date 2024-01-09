@@ -95,6 +95,8 @@ class CNN(nn.Module):
 
 def main():
     # Creating the process group
+    os.environ['RANK'] = os.environ['OMPI_COMM_WORLD_RANK']
+    os.environ['WORLD_SIZE'] = os.environ['OMPI_COMM_WORLD_SIZE']
     dist.init_process_group(backend="nccl", init_method="env://")
     my_rank = dist.get_rank()
 
