@@ -73,13 +73,8 @@ def test(model, test_loader, device):
     print('Accuracy of the network on the {} test images: {} %'.format(10000, 100 * correct / total))
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--local_rank", type=int, help="Local rank. Necessary for using the torch.distributed.launch utility.")
-    parser.add_argument("--backend", type=str, default="gloo", choices=['nccl', 'gloo', 'mpi'])
-    args = parser.parse_args()
-
     # Creating the process group
-    dist.init_process_group(backend=args.backend, init_method="env://")
+    dist.init_process_group(backend="nccl", init_method="env://")
     my_rank = dist.get_rank()
 
     # Device
