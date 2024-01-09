@@ -102,13 +102,8 @@ class CNN(nn.Module):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--local_rank", type=int, help="Local rank. Necessary for using the torch.distributed.launch utility.")
-    parser.add_argument("--backend", type=str, default="gloo", choices=['ccl', 'nccl', 'gloo', 'mpi'])
-    args = parser.parse_args()
-
     # Creating the process group
-    dist.init_process_group(backend=args.backend, init_method="env://")
+    dist.init_process_group(backend="ccl", init_method="env://")
        
     # General parameters
     data_dir = '/tmp'
