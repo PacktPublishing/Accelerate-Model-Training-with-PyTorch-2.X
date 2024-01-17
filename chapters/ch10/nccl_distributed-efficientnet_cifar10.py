@@ -78,7 +78,7 @@ def main():
     my_rank = dist.get_rank()
 
     # Device
-    device = my_rank % torch.cuda.device_count()
+    device = my_rank
 
     # General parameters
     data_dir = '/tmp'
