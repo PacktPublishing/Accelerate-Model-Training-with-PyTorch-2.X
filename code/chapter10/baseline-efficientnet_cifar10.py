@@ -45,7 +45,6 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
        
         print('Epoch [{}/{}], Loss: {:.4f}, time: {} seconds'.format(epoch+1, num_epochs, loss.item(), int(end-start)))

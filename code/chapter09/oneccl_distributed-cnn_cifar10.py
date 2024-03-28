@@ -54,7 +54,6 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device, my_rank
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
                
        

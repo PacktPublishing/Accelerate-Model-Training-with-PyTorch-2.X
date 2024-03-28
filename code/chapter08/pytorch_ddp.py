@@ -51,7 +51,6 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
                
        
@@ -100,18 +99,11 @@ class CNN(nn.Module):
 def checkpoint(ddp_model):
     CHECKPOINT_PATH = tempfile.gettempdir() + "/model.checkpoint"
     if WORLD_RANK == 0:
-        # All processes should see same parameters as they all start from same
-        # random parameters and gradients are synchronized in backward passes.
-        # Therefore, saving it in one process is sufficient.
         torch.save(ddp_model.state_dict(), CHECKPOINT_PATH)
 
-    # Use a barrier() to make sure that process 1 loads the model after process
-    # 0 saves it.
     dist.barrier()
     ddp_model.load_state_dict(torch.load(CHECKPOINT_PATH))
     
-    # Use a barrier() to make sure that all processes have finished reading the
-    # checkpoint
     dist.barrier()
 
     if WORLD_RANK == 0:

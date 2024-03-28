@@ -42,7 +42,6 @@ def train(model, train_loader, num_epochs, criterion, optimizer, device):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            #print ('Step [{}/{}], Loss: {:.4f}'.format(step+1, total_steps, loss.item()))
         end = time.time()
                
        
@@ -121,11 +120,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-# Using Intel OpenMP image with Gloo
-
-
-
 
