@@ -8,11 +8,11 @@ B. Scaling, resizing, and loading
 
 C. Resizing, loading, and filtering
 
-D. Loading, preparation, and augmentation
+**D. Loading, preparation, and augmentation**
 
 ### 2. Data loading feeds which phase of the training process?
 
-A. Forward
+**A. Forward**
 
 B. Backward
 
@@ -20,13 +20,13 @@ C. Optimization
 
 D. Loss calculation
 
-### 3. Which components provided by the torch.utils.data API can be used to implement a data pipeline?
+### 3. Which components provided by the `torch.utils.data` API can be used to implement a data pipeline?
 
 A. Datapipe and DataLoader
 
 B. Dataset and DataLoading
 
-C. Dataset and DataLoader
+**C. Dataset and DataLoader**
 
 D. Datapipe and DataLoading
 
@@ -38,7 +38,7 @@ B. Do not use a GPU
 
 C. Avoid the usage of high-dimensional images
 
-D. Optimize data transfer between the CPU and GPU
+**D. Optimize data transfer between the CPU and GPU**
 
 ### 5. How can we accelerate the data transfer between the CPU and GPU?
 
@@ -46,7 +46,7 @@ A. Use smaller datasets
 
 B. Use the fastest GPUs
 
-C. Allocate and use pinned memory instead of pageable memory
+**C. Allocate and use pinned memory instead of pageable memory**
 
 D. Increase the amount of main memory
 
@@ -54,7 +54,7 @@ D. Increase the amount of main memory
 
 A. Nothing. It is already enabled by default.
 
-B. Set the pin_memory parameter to True.
+**B. Set the pin_memory parameter to True.**
 
 C. Set the experimental_copy parameter to True.
 
@@ -68,13 +68,13 @@ B. PyTorch enables the usage of special hardware capabilities
 
 C. PyTorch uses the fastest links to communicate with GPUs
 
-D. PyTorch processes simultaneously more than one dataset sample
+**D. PyTorch processes simultaneously more than one dataset sample**
 
 ### 8. Which of the following is true when making a request to allocate pinned memory?
 
 A. It is always satisfied
 
-B. It can fail
+**B. It can fail**
 
 C. It always fails
 
