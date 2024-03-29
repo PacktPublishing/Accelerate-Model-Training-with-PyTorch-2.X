@@ -1,4 +1,6 @@
-# Chapter 2 - Quiz answers
+# Chapter 2 - Training Models Faster
+
+## Quiz answers
 
 ### 1. After running the training process using two GPUs in a single machine, we decided to add two extra GPUs to accelerate the training process. In this case, we tried to improve the performance of the training process by applying which of the following?
 
