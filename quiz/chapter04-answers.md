@@ -1,4 +1,6 @@
-# Chapter 4 - Quiz Answers
+# Chapter 4 - Using Specialized Libraries
+
+## Quiz Answers
 
 ### 1. A multicore system can have the following two types of computing cores:
 
