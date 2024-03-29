@@ -1,4 +1,6 @@
-# Chapter 3 - Quiz answers
+# Chapter 3 - Compiling the Model
+
+## Quiz answers
 
 ### 1. Which are the two execution modes of PyTorch?
 
