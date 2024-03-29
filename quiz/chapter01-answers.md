@@ -1,4 +1,6 @@
-# Chapter 1 - Quiz answers
+# Chapter 1 - Deconstructing the Training Process
+
+## Quiz answers
 
 ### 1. Which phases comprise the training process?
 
