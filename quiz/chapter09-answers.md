@@ -4,7 +4,7 @@
 
 ### 1. In multicore systems, we can improve the performance of the training process by increasing the number of threads used by PyTorch. Concerning this topic, we can affirm which of the following?
 
-A. After crossing a certain number of threads, the performance improvement can deteriorate or stay the same.
+**A. After crossing a certain number of threads, the performance improvement can deteriorate or stay the same.**
 
 B. The performance improvement always keeps rising, no matter the number of threads.
 
@@ -16,7 +16,7 @@ D. Performance improvement is only achieved when using 16 threads.
 
 A. NNI.
 
-B. Gloo
+**B. Gloo**
 
 C. MPI.
 
@@ -30,11 +30,11 @@ B. Gloorun.
 
 C. MPIRun.
 
-D. Torchrun.
+**D. Torchrun.**
 
 ### 4. In the context of PyTorch, what is Intel OneCCL?
 
-A. Communication backend.
+**A. Communication backend.**
 
 B. Program launcher.
 
@@ -50,7 +50,7 @@ B. Torchrun.
 
 C. OneCCL.
 
-D. Gloo.
+**D. Gloo.**
 
 ### 6. Concerning the performance of the training process when using Gloo or OneCCL as a communication backend, we can say which of the following?
 
@@ -58,13 +58,13 @@ A. There is no difference at all.
 
 B. Gloo is always better than OneCCL.
 
-C. OneCCL can overcome Gloo in Intel platforms.
+**C. OneCCL can overcome Gloo in Intel platforms.**
 
-D. OneCCL is always better than Gloo
+D. OneCCL is always better than Gloo.
 
 ### 7. When distributing the training process among multiple CPUs and cores, we need to define the allocation of threads in order to do which of the following?
 
-A. Guarantee all threads have exclusive usage of computing resources.
+**A. Guarantee all threads have exclusive usage of computing resources.**
 
 B. Guarantee secure execution.
 
@@ -76,7 +76,7 @@ D. Guarantee that data are shared among all threads.
 
 A. Create a pool of shared memory and instantiate the processes in the operating system.
 
-B. Define the environment variables related to the distributed environment and instantiate the processes on the operating system.
+**B. Define the environment variables related to the distributed environment and instantiate the processes on the operating system.**
 
 C. Define the environment variables related to the distributed environment and create a pool of shared memory.
 
