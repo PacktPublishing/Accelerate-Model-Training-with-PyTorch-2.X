@@ -10,11 +10,11 @@ B. Leak of memory and power consumption.
 
 C. Power consumption and performance improvement.
 
-D. Leak of memory and performance improvement.
+**D. Leak of memory and performance improvement.**
 
 ### 2. Which are the two main parallel strategies to distribute the training process?
 
-A. Model and data parallelism.
+**A. Model and data parallelism.**
 
 B. Model and hardware parallelism.
 
@@ -28,7 +28,7 @@ A. Inter-model.
 
 B. Inter-data.
 
-C. Inter-operation.
+**C. Inter-operation.**
 
 D. Inter-parameter.
 
@@ -36,7 +36,7 @@ D. Inter-parameter.
 
 A. Distinct operations.
 
-B. Parts of the same operation
+**B. Parts of the same operation**
 
 C. Layers of the model.
 
@@ -48,13 +48,13 @@ A. All-operations.
 
 B. All-gather.
 
-C. All-reduce.
+**C. All-reduce.**
 
 D. All-scather.
 
 ### 6. What is the first step of executing distributed training in PyTorch?
 
-A. Initialize the communication group.
+**A. Initialize the communication group.**
 
 B. Initialize the model replica.
 
@@ -68,7 +68,7 @@ A. Execution library.
 
 B. Communication backend.
 
-C. Program launcher.
+**C. Program launcher.**
 
 D. Compiler backend
 
@@ -76,7 +76,7 @@ D. Compiler backend
 
 A. NDL.
 
-B. MPI.
+**B. MPI.**
 
 C. AMP.
 
