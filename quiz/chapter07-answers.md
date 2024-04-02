@@ -1,3 +1,5 @@
+Adopting Mixed Precision
+
 Which of the following numeric formats represents integers by using only 8 bits?
 A. FP8.
 B. INT32.
@@ -39,3 +41,9 @@ A. Simple usage and reduction of performance improvement
 B. Simple usage and reduction of power consumption
 C. Complex usage and avoidance of errors involving numeric representation
 D. Simple usage and avoidance of errors involving numeric representation
+Besides the lack of lower-precision operations, which of the following options is another reason 
+to not use a pure lower-precision approach in the training process?
+A. Low performance improvement
+B. High energy consumption
+C. Loss of information on the gradient
+D. High usage of main memory
