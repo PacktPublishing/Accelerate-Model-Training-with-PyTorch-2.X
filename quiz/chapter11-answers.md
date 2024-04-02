@@ -8,13 +8,13 @@ A. Thread.
 
 B. Process.
 
-C. Job.
+**C. Job.**
 
 D. Work
 
 ### 2. What are the main tasks executed by a workload manager?
 
-A. Resource management and job scheduling.
+**A. Resource management and job scheduling.**
 
 B. Memory allocation and thread scheduling.
 
@@ -26,7 +26,7 @@ D. Resource management and node scheduling.
 
 A. MPI.
 
-B. SLURM.
+**B. SLURM.**
 
 C. NCCL.
 
@@ -40,7 +40,7 @@ B. A high number of connections.
 
 C. A low number of connections.
 
-D. A very low latency
+**D. A very low latency.**
 
 ### 5. RDMA reduces drastically the communication latency between two remote GPUs because it enables which of the following?
 
@@ -48,7 +48,7 @@ A. Allocation of higher memory space on GPUs.
 
 B. Special hardware capabilities on GPUs.
 
-C. Data transfer without involving the CPU and main memory.
+**C. Data transfer without involving the CPU and main memory.**
 
 D. Data transfer without involving network adapters and switches.
 
@@ -56,7 +56,7 @@ D. Data transfer without involving network adapters and switches.
 
 A. Open MPI is a compiler to create distributed applications.
 
-B. Open MPI is a toolset comprised of compilers, debuggers, and a complete runtime mechanism to create, debug, and run distributed applications.
+**B. Open MPI is a toolset comprised of compilers, debuggers, and a complete runtime mechanism to create, debug, and run distributed applications.**
 
 C. Open MPI is a standard that specifies a set of communication routines, data types, events, and operations used to implement distributed applications.
 
@@ -68,7 +68,7 @@ A. 0 and 1.
 
 B. 0 and 2.
 
-C. 2 and 3.
+**C. 2 and 3.**
 
 D. 0 and 3
 
@@ -80,4 +80,4 @@ B. The leak of memory space available on the network adapters.
 
 C. Nothing; it is always recommended to use multiple machines to run the distributed training.
 
-D. The impact the interconnection network may have on the communication between the processes participating in the distributed training
+**D. The impact the interconnection network may have on the communication between the processes participating in the distributed training.**
