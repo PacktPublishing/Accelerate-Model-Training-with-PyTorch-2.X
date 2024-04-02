@@ -1,4 +1,4 @@
-# Chapter 6 - Using Specialized Libraries
+# Chapter 6 - Simplifying the Model
 
 ## Quiz Answers
 
