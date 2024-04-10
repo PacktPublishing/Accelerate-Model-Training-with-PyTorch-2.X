@@ -1,6 +1,6 @@
 # Accelerate Model Training with PyTorch 2.X
 
-<a href="https://www.packtpub.com/product/accelerate-model-training-with-pytorch-2x/9781805120100"><img src="https://content.packt.com/B20959/cover_image_small.jpg" alt="no-image" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/accelerate-model-training-with-pytorch-2x/9781805120100"><img src="https://content.packt.com/_/image/original/B20959/cover_image_large.jpg" alt="no-image" height="256px" align="right"></a>
 
 This is the code repository for [Accelerate Model Training with PyTorch 2.X](https://www.packtpub.com/product/accelerate-model-training-with-pytorch-2x/9781805120100), published by Packt.
 
