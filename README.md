@@ -1,6 +1,3 @@
-
-<b><p align='center'>[![Packt Sale](https://static.packt-cdn.com/assets/images/packt+events/Improve_UX.png)](https://packt.link/algotradingpython)</p></b> 
-
 # Accelerate Model Training with PyTorch 2.X
 
 <a href="https://www.packtpub.com/product/accelerate-model-training-with-pytorch-2x/9781805120100"><img src="https://content.packt.com/_/image/original/B20959/cover_image_large.jpg" alt="no-image" height="256px" align="right"></a>
