@@ -1,3 +1,5 @@
+<p align='center'><a href='https://www.eventbrite.com/e/algorithmic-trading-with-python-cohort-2-tickets-1833367644979?aff=oddtdtcreator'><img src='https://static.packt-cdn.com/assets/images/packt+events/Python_for_Algorithmic Trading_v1.png'/></a></p>
+
 # Accelerate Model Training with PyTorch 2.X
 
 <a href="https://www.packtpub.com/product/accelerate-model-training-with-pytorch-2x/9781805120100"><img src="https://content.packt.com/_/image/original/B20959/cover_image_large.jpg" alt="no-image" height="256px" align="right"></a>
