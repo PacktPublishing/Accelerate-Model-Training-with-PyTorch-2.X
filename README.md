@@ -42,6 +42,11 @@ With the following software and hardware list you can run all code files present
 | 1-11 | PyTorch 2.X | Windows, Linux, or macOS |
 
 To enhance your experience, we recommend executing the code on a system equipped with an NVIDIA graphics card with CUDA support and ensure that you run the code in a suitable environment with all the necessary libraries and moudles installed.
+## Errata
+**Page 23(Paragraph 2):**
+<p>Finally, the execution layer of scenarios B and C uses a container solution to execute the upper layers, whereas the upper layers of examples A and D run directly on the operating system.</p>
+ <p style="font-weight: bold;"><em>Should be</em></p>
+ <p>Finally, the execution layer of scenarios A and C uses a container solution to execute the upper layers, whereas the upper layers of examples B and D run directly on the operating system.</p>
 
 ### Related products
 * Mastering Pytorch - Second Edition [[Packt]](https://www.packtpub.com/product/mastering-pytorch-second-edition/9781801074308) [[Amazon]](https://www.amazon.com/Mastering-PyTorch-powerful-learning-architectures/dp/1801074305/ref=sr_1_1?crid=33AHF6JM4F9A3&dib=eyJ2IjoiMSJ9.noK35dYks6axzt5WU2UhtLXOuU_TsfgAo_qjgMBy00a4HU3uxin7sTZDBhS8SrrWREjipOTeMsjcmwzF2NHDeSVTqTQWsz1YiqhZ4a_68ulgrRlCHE_hfDTjs4h6d9JsZSzW6Kl1m8TiWb4Ysxr6kMp7P09JWsjgvWt03heq58WtlUz1F58pr-4Z2olv0RBcEFEn94lyWxmR0NedZiqJEFhr4mc-hf1yyEDd9b1EbcM.qWJ73SnRbQ77nNPqxPm9fkdDJTXYDpJLIXS2OqBz9WU&dib_tag=se&keywords=Mastering+Pytorch&qid=1712134269&sprefix=mastering+pytorch%2Caps%2C745&sr=8-1)
